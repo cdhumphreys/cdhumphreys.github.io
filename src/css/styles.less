@@ -3,12 +3,23 @@
 @primaryDarkBlue: #153F78;
 @imgFolder: '../../dist/images/';
 
+@keyframes pulse  {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
 
 body {
   font-family: 'Lato', 'sans-serif';
   margin: 0;
   padding: 0;
   font-size: 16px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -91,12 +102,120 @@ a {
         margin: 0;
         padding: 0;
 
-        transform: translate(-50%, -50%);
 
+        transform: translate(-50%, -50%);
         &:hover {
           cursor: pointer;
         }
 
+      }
+
+      #interests {
+        position: absolute;;
+        top: 46%;
+        left: 10%;
+        height: 20%;
+
+        width:200px;
+        max-width: 50%;
+
+        &:hover {
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        #landing-book {
+          z-index: 4;
+
+          top: 15%;
+          left: 15%;
+
+          width: 20%;
+          max-width: 200px;
+          min-width: 100px;
+        }
+
+        #landing-coffee {
+          z-index: 5;
+
+          bottom: 0%;
+          right: 0%;
+
+          width: 10%;
+          max-width: 100px;
+          min-width: 40px;
+        }
+
+        #landing-controller {
+          z-index: 5;
+
+          left: 10%;
+          bottom:15%;
+
+          width: 20%;
+          max-width: 150px;
+          min-width: 75px;
+
+          transform: rotate(25deg);
+        }
+
+        #landing-headphones {
+          z-index: 4;
+
+          top: 0;
+          right: 0%;
+
+          width: 20%;
+          max-width: 200px;
+          min-width: 100px;
+          transform: rotate(25deg);
+          transform-origin: 50% 50%;
+        }
+
+
+      }
+
+      #landing-postit {
+        background-color: @primaryLightBlue;
+        position: absolute;
+        top: 50%;
+        right: 20%;
+        width: 15%;
+        height: 8%;
+        max-width: 200px;
+        transform: rotate(-5deg);
+        z-index: 5;
+
+        &:hover {
+          // filter: drop-shadow(2px 2px 5px black);
+          box-shadow: 2px 2px 5px black;
+          a {
+              color: white;
+          }
+
+        }
+
+        a {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          color: black;
+
+
+
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 10px;
+          background-color: hsl(208, 41%, 48%);
+        }
+        .postit {
+          position: relative;
+          width: 20%;
+          margin: 15% 1% 1% 1%;
+        }
       }
 
       #landing-monitor {
@@ -105,31 +224,12 @@ a {
         top: 30%;
         width: 60%;
         max-width: 600px;
-      }
 
-      #landing-book {
-        z-index: 4;
-        top: 45%;
-        width: 20%;
-        left: 10%;
-        max-width: 200px;
-      }
+        &:hover {
+          // filter: drop-shadow(2px 2px 5px black);
+            box-shadow: 2px 2px 5px black;
 
-      #landing-coffee {
-        z-index: 4;
-        top: 45%;
-        right: 5%;
-        width: 10%;
-        max-width: 100px;
-      }
-
-      #landing-controller {
-        z-index: 5;
-        left: 20%;
-        top: 50%;
-        width: 15%;
-        max-width: 150px;
-        transform: rotate(25deg);
+        }
       }
 
       #landing-diplomas {
@@ -138,16 +238,12 @@ a {
         top: 20%;
         width: 20%;
         max-width: 200px;
-      }
 
-      #landing-headphones {
-        z-index: 2;
-        top: 5%;
-        right: 10%;
-        width: 20%;
-        max-width: 200px;
-        transform: rotate(25deg);
-        transform-origin: 50% 50%;
+        &:hover {
+          // filter: drop-shadow(2px 2px 5px black);
+            box-shadow: 2px 2px 5px black;
+            animation: spin 1.5s ease-in-out infinite;
+        }
       }
 
       #landing-keyboard {
@@ -156,15 +252,8 @@ a {
         top: 75%;
         left: 50%;
         max-width: 600px;
+        min-width: 400px;
         border-radius: 1%;
-      }
-
-      #landing-mouse {
-        z-index: 5;
-        top: 55%;
-        right: 20%;
-        width: 10%;
-        max-width: 100px;
       }
     }
     // end of images container
@@ -178,9 +267,10 @@ a {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: auto;
+  height: 100%;
   color: white;
   background-color: @primaryDarkBlue;
+
 
   h2 {
     margin: 0;
@@ -192,6 +282,9 @@ a {
   #contact-info {
     margin: 0;
     padding: 0;
+    text-align: center;
+
+    height: 100px;
 
     li {
       // padding: 0.5em;
@@ -199,28 +292,44 @@ a {
       // margin-bottom: 2em;
       list-style-type: none;
       display: inline-block;
-      height: 50px;
-    }
-
-    a {
-      color: white;
-      display: inline;
-    }
-
-    .icon {
-      display: inline-block;
       position: relative;
-      background-color: @primaryLightBlue;
-      border-radius: 50%;
-      // margin: 0 auto;
-      font-size: 2em;
-      line-height: 1.5em;
-      width: 50px;
-      height: 50px;
-      text-align: center;
+      height: 100px;
+      width: 100px;
+
+      div {
+        position: relative;
+        display: inline-block;
+
+
+          .icon {
+            display: inline-block;
+            position: relative;
+            background-color: @primaryLightBlue;
+            border-radius: 50%;
+
+            font-size: 2em;
+            line-height: 1.5em;
+            width: 50px;
+            height: 50px;
+
+          }
+          span {
+            position: absolute;
+            display: block;
+            font-size: 0.8em;
+            margin-top: 10px;
+            width: 50px;
+
+          }
+
+          a {
+            color: white;
+            display: inline;
+            width: auto;
+            height: 100px;
+          }
+      }
     }
-
-
   }
-
 }
+// end of footer
