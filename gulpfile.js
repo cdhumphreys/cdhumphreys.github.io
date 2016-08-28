@@ -42,7 +42,7 @@ gulp.task('js', function () {
         }))
     .on('error', errorHandler)
     .pipe(
-        gulp.dest('./dist/css')
+        gulp.dest('./dist/js')
     )
     .pipe(
       browserSync.reload({
@@ -59,6 +59,7 @@ gulp.task('browser-sync', ['less', 'js'], function() {
   });
 });
 
+gulp.task('default', ['less', 'js']);
 
 gulp.task('watch', ['browser-sync'], function () {
     gulp.watch("src/css/*.less", ['less']);
