@@ -1,0 +1,33 @@
+---
+import Banner from "../blocks/Banner.astro";
+import Work from "../blocks/Work.astro";
+import About from "../blocks/About.astro";
+import Footer from "../blocks/Footer.astro";
+
+import "../styles/reset.css";
+import "../styles/main.css";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Carl Humphreys</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<main>
+			<Banner />
+			<Work />
+			<About />
+		</main>
+		<Footer />
+	</body>
+</html>
