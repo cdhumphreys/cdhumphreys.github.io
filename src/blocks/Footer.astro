@@ -1,24 +1,25 @@
 ---
-import InstagramIcon from "../components/icons/instagram.astro";
-import LinkedInIcon from "../components/icons/linkedin.astro";
+// import InstagramIcon from "../components/icons/instagram.astro";
+// import LinkedInIcon from "../components/icons/linkedin.astro";
+import { InstagramIcon, LinkedInIcon } from "../components/Icon.astro";
 ---
 
 <footer class="footer container">
     <div class="footer__inner">
-        <p>Made with ☕️ by <span class="text-secondary">me</span></p>
+        <p>Made with ☕️ by <span class="text-primary">me</span></p>
         <p>
-            Built with <span class="text-secondary">HTML</span>, <span
-                class="text-secondary">CSS</span
-            > & <span class="text-secondary">Typescript</span> using <span
-                class="text-secondary">Astro</span
+            Built with <span class="text-primary">HTML</span>, <span
+                class="text-primary">CSS</span
+            > & <span class="text-primary">Typescript</span> using <span
+                class="text-primary">Astro</span
             >
         </p>
         <div class="footer__socials">
-            <a class="footer-social-link" href="#">
+            <a class="footer-social-link" href="#" target="_blank">
                 <div class="sr-only">Carl's LinkedIn profile</div>
                 <LinkedInIcon />
             </a>
-            <a class="footer-social-link" href="#">
+            <a class="footer-social-link" href="#" target="_blank">
                 <div class="sr-only">Carl's Instagram profile</div>
                 <InstagramIcon />
             </a>
@@ -28,25 +29,21 @@ import LinkedInIcon from "../components/icons/linkedin.astro";
 
 <style>
     .footer {
-        padding-top: var(--spacing-6);
-        padding-bottom: var(--spacing-6);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding-top: var(--spacing-80);
+        padding-bottom: var(--spacing-80);
     }
 
     .footer__inner {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-3);
+        gap: var(--spacing-30);
         text-align: center;
     }
 
     .footer__socials {
         display: flex;
         justify-content: center;
-        gap: var(--spacing-2);
+        gap: var(--spacing-20);
     }
 
     .footer-social-link {
@@ -63,7 +60,7 @@ import LinkedInIcon from "../components/icons/linkedin.astro";
 
     @media (min-width: 1024px) {
         .footer {
-            padding-top: var(--spacing-8);
+            padding-top: var(--spacing-120);
         }
     }
 </style>

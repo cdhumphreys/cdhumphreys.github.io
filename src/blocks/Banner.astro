@@ -1,11 +1,151 @@
+---
+import {
+    PresentationIcon,
+    InfoHexagonIcon,
+    DownloadIcon,
+} from "../components/Icon.astro";
+import Profile from "../components/Profile.astro";
+import Card from "../components/Card.astro";
+---
+
 <section class="banner container">
     <div class="banner__inner">
-        <h1>Hello World</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
-            corrupti laboriosam eveniet adipisci mollitia inventore rerum
-            architecto, laudantium fuga doloribus unde eos, nihil amet quas
-            ullam sint quod libero deserunt.
-        </p>
+        <Profile />
+        <div class="banner__nav">
+            <a href="#work">
+                <Card class="card--translucent">
+                    <Fragment slot="title">
+                        <h3>Work</h3>
+                    </Fragment>
+                    <Fragment slot="text">
+                        <p>Some of the projects I've worked on</p>
+                    </Fragment>
+                    <Fragment slot="image">
+                        <PresentationIcon class="text-primary" />
+                    </Fragment>
+                </Card>
+            </a>
+            <a href="#about">
+                <Card class="card--translucent">
+                    <Fragment slot="title">
+                        <h3>About</h3>
+                    </Fragment>
+                    <Fragment slot="text">
+                        <p>Want to know more about me?</p>
+                    </Fragment>
+                    <Fragment slot="image">
+                        <InfoHexagonIcon class="text-primary" />
+                    </Fragment>
+                </Card>
+            </a>
+            <a
+                href="https://docs.google.com/document/d/1JiQitPDvDbyqtQV8P7FgXy-vc7jmG3Kja7cBePOJH6Y/export?format=pdf"
+                download
+            >
+                <Card class="card--translucent">
+                    <Fragment slot="title">
+                        <h3>CV</h3>
+                    </Fragment>
+                    <Fragment slot="text">
+                        <p>Download a copy of my CV</p>
+                    </Fragment>
+                    <Fragment slot="image">
+                        <DownloadIcon class="text-primary" />
+                    </Fragment>
+                </Card>
+            </a>
+        </div>
     </div>
+
+    <style>
+        .banner {
+            padding-block: var(--section-vertical-padding);
+            position: relative;
+
+            z-index: 0;
+
+            min-height: 100vh;
+
+            place-content: center;
+
+            &::before,
+            &::after {
+                content: "";
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+
+            &::before {
+                background-image: radial-gradient(
+                    circle at 100% 50%,
+                    var(--colour-primary),
+                    transparent
+                );
+                background-size: 550px 400px;
+                background-repeat: no-repeat;
+                background-position: top -30% right 200%;
+
+                filter: blur(80px);
+
+                @media screen and (min-width: 1024px) {
+                    display: none;
+                }
+            }
+
+            &::after {
+                background-image: radial-gradient(
+                    circle at 150% 150%,
+                    var(--colour-primary),
+                    transparent
+                );
+                filter: blur(200px);
+                background-position: left 0% bottom 0%;
+                background-repeat: no-repeat;
+                background-size: 700px 700px;
+
+                @media screen and (min-width: 1024px) {
+                    background-image: radial-gradient(
+                        circle at 50% 40%,
+                        var(--colour-primary),
+                        transparent 50%
+                    );
+                    filter: blur(100px);
+                    background-position: center;
+                    background-size: contain;
+                    opacity: 0.3;
+                }
+            }
+        }
+        .banner__inner {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-60);
+            align-items: center;
+
+            @media (min-width: 1024px) {
+                gap: var(--spacing-100);
+            }
+        }
+
+        .banner__nav {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-20);
+
+            @media screen and (min-width: 1024px) {
+                flex-direction: row;
+                gap: var(--spacing-30);
+            }
+        }
+
+        .banner__nav > a {
+            flex: 1 1 100%;
+            display: flex;
+        }
+    </style>
 </section>

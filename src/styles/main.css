@@ -2,22 +2,70 @@
     /* Colours */
     --colour-primary: #B46CF8;
     --colour-secondary: #E6AF2E;
-    --colour-background: #111;
     --colour-text-base: white;
+    --colour-black: #222;
+
+    --colour-primary-rgba: 180, 108, 248;
+    --colour-secondary-rgba: 230, 175, 46;
+
+    --colour-background: var(--colour-black);
+    --colour-background-card: var(--colour-black);
 
     /* Spacings */
-    --spacing-1: 10px;
-    --spacing-2: 20px;
-    --spacing-3: 30px;
-    --spacing-4: 40px;
-    --spacing-5: 60px;
-    --spacing-6: 80px;
-    --spacing-7: 100px;
-    --spacing-8: 120px;
+    --spacing-6: 6px;
+    --spacing-10: 10px;
+    --spacing-20: 20px;
+    --spacing-24: 24px;
+    --spacing-30: 30px;
+    --spacing-40: 40px;
+    --spacing-60: 60px;
+    --spacing-80: 80px;
+    --spacing-100: 100px;
+    --spacing-120: 120px;
+
+    /* Font */
 
     --font-display: "Source Sans 3", sans-serif;
     --font-copy: "Amiko", sans-serif;
 
+    --fs-12: 12px;
+    --fs-14: 14px;
+    --fs-16: 16px;
+    --fs-18: 18px;
+    --fs-20: 20px;
+    --fs-24: 24px;
+    --fs-30: 30px;
+    --fs-36: 36px;
+    --fs-48: 48px;
+    --fs-60: 60px;
+    --fs-72: 72px;
+
+    --fs-title: var(--fs-30);
+    --fs-body: var(--fs-16);
+
+
+    --radius-5: 5px;
+    --radius-10: 10px;
+    --radius-full: 9999px;
+
+    --card-shadow: 0 0px 4px 0 rgba(var(--colour-primary-rgba), 0.2);
+    --card-shadow--hover: 0 0px 6px 0 rgba(var(--colour-primary-rgba), 1);
+
+    --section-vertical-padding: var(--spacing-40);
+
+}
+
+@media screen and (min-width: 1023px) {
+    :root {
+        --section-vertical-padding: var(--spacing-80);
+        --fs-title: var(--fs-60);
+        --fs-body: var(--fs-18);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    /* scroll-padding-top: var(--spacing-20); */
 }
 
 body {
@@ -25,6 +73,7 @@ body {
     color: var(--colour-text-base);
 
     font-family: var(--font-copy);
+    font-size: var(--fs-body);
 }
 
 h1,
@@ -34,6 +83,13 @@ h4,
 h5,
 h6 {
     font-family: var(--font-display);
+    margin: 0;
+    line-height: 1;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
 }
 
 .sr-only {
@@ -50,46 +106,37 @@ h6 {
 
 .container {
     --max-content-width: 100%;
-    --padding-inline: 20px;
+    --padding-inline: var(--spacing-20);
 
     display: grid;
     grid-template-columns:
         [grid-start] 1fr [content-start] minmax(min(100%, calc(var(--max-content-width) - 2 * var(--padding-inline))), 1fr) [content-end] 1fr [grid-end];
-}
 
-.container> :not(.container-breakout) {
-    grid-column: content;
-}
+    &> :not(.container-breakout) {
+        grid-column: content;
+    }
 
-@media screen and (min-width: 640px) {
-    .container {
+    @media screen and (min-width: 640px) {
         --max-content-width: 640px;
     }
-}
 
-@media screen and (min-width: 768px) {
-    .container {
+    @media screen and (min-width: 768px) {
         --max-content-width: 768px;
     }
-}
 
-@media screen and (min-width: 1024px) {
-    .container {
+    @media screen and (min-width: 1024px) {
         --max-content-width: 1024px;
     }
-}
 
-@media screen and (min-width: 1280px) {
-    .container {
+    @media screen and (min-width: 1280px) {
         --max-content-width: 1280px;
     }
-}
 
-@media screen and (min-width: 1536px) {
-    .container {
+    @media screen and (min-width: 1536px) {
         --max-content-width: 1536px;
     }
 }
+
 
 .text-primary {
     color: var(--colour-primary);

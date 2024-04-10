@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import profileImage from "../images/profile/avatar.jpg";
+---
+
+<div class="profile">
+    <div class="profile__text">
+        <h1 class="profile__title">Hi I’m Carl 👋</h1>
+        <p class="profile__description">
+            I'm a web developer based in Yorkshire, UK
+        </p>
+    </div>
+    <Image
+        class="profile__image"
+        src={profileImage}
+        width={250}
+        alt="Profile picture of Carl"
+        densities={[1, 2]}
+    />
+</div>
+
+<style>
+    .profile {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: var(--spacing-40);
+
+        @media screen and (min-width: 1024px) {
+            flex-direction: row;
+            align-items: center;
+            gap: var(--spacing-60);
+        }
+
+        .profile__text {
+        }
+        .profile__title {
+            font-size: var(--fs-30);
+        }
+        .profile__description {
+            margin-top: var(--spacing-10);
+            font-size: var(--fs-18);
+        }
+
+        .profile__image {
+            animation: border-morph 15s infinite ease-in-out;
+            overflow: hidden;
+            align-self: center;
+
+            box-shadow: 0 0 4px 1px var(--colour-primary);
+        }
+    }
+
+    @keyframes border-morph {
+        0%,
+        100% {
+            border-radius: 54% 46% 48% 52% / 48% 55% 45% 52%;
+        }
+        25% {
+            border-radius: 31% 69% 30% 70% / 74% 28% 72% 26%;
+        }
+        75% {
+            border-radius: 77% 23% 72% 28% / 30% 80% 20% 70%;
+        }
+    }
+</style>
