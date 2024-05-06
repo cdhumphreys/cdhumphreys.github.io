@@ -15,7 +15,9 @@
     "@types/alpinejs": "^3.13.6",
     "astro": "^4.4.8",
     "browserslist": "^4.23.0",
+    "lenis": "^1.0.45",
     "lightningcss": "^1.24.1",
+    "motion": "^10.17.0",
     "typescript": "^5.3.3"
   }
 }

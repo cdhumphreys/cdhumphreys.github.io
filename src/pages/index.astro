@@ -31,3 +31,24 @@ import "../styles/main.css";
 		<Footer />
 	</body>
 </html>
+
+<script>
+	import Lenis from "lenis";
+
+	declare global {
+		interface Window {
+			lenis: Lenis;
+		}
+	}
+
+	const lenis = new Lenis();
+
+	function raf(time: number) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+
+	requestAnimationFrame(raf);
+
+	window.lenis = lenis;
+</script>
