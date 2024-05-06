@@ -64,6 +64,11 @@
 html {
     scroll-behavior: smooth;
     /* scroll-padding-top: var(--spacing-20); */
+
+}
+
+::selection {
+    background: var(--colour-primary);
 }
 
 body {
@@ -74,6 +79,7 @@ body {
     font-size: var(--fs-body);
 
     overflow-x: clip;
+    width: 100%;
 }
 
 h1,

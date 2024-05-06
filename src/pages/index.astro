@@ -29,9 +29,33 @@ import "../styles/main.css";
 			<About />
 		</main>
 		<Footer />
+		<div class="js-spotlight spotlight"></div>
 	</body>
 </html>
+<script src="../scripts/spotlight.ts"></script>
+<style>
+	body {
+		position: relative;
+		isolation: isolate;
+	}
+	.spotlight {
+		position: fixed;
+		z-index: -1;
+		width: 500px;
+		height: 500px;
+		top: 0;
+		left: 0;
 
+		background-image: radial-gradient(
+			50% 50%,
+			var(--colour-primary),
+			transparent
+		);
+		filter: blur(100px);
+		background-size: contain;
+		opacity: 0.3;
+	}
+</style>
 <script>
 	import Lenis from "lenis";
 

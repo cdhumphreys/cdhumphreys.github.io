@@ -74,8 +74,7 @@ import BannerCard from "../components/BannerCard.astro";
         </div>
     </div>
 </section>
-<script src="../scripts/banner.ts"></script>
-<style>
+<style is:global>
     .banner {
         padding-block: var(--section-vertical-padding);
         position: relative;
@@ -127,15 +126,7 @@ import BannerCard from "../components/BannerCard.astro";
             background-size: 700px 700px;
 
             @media screen and (min-width: 1024px) {
-                background-image: radial-gradient(
-                    circle at var(--x, 50%) var(--y, 40%),
-                    var(--colour-primary),
-                    transparent 50%
-                );
-                filter: blur(100px);
-                background-position: center;
-                background-size: contain;
-                opacity: 0.3;
+                display: none;
             }
         }
     }
