@@ -124,6 +124,8 @@ const { img, alt, tags, title, style, href } = Astro.props;
 
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
 
+            will-change: clip-path;
+
             @media screen and (min-width: 1024px) {
                 padding: var(--spacing-40);
             }
@@ -166,16 +168,6 @@ const { img, alt, tags, title, style, href } = Astro.props;
             align-items: flex-start;
             gap: var(--spacing-10);
         }
-
-        &:hover {
-            .project-card__image-wrapper::after {
-                opacity: 1;
-            }
-
-            .project-card__overlay {
-                opacity: 1;
-            }
-        }
     }
 </style>
 
@@ -183,7 +175,7 @@ const { img, alt, tags, title, style, href } = Astro.props;
     import { animate, inView } from "motion";
 
     const cards = document.querySelectorAll(".js-projectCard");
-    console.log(cards);
+
     cards.forEach(function (card) {
         const overlay = card.querySelector<HTMLElement>(
             ".js-projectCardOverlay",
@@ -205,23 +197,31 @@ const { img, alt, tags, title, style, href } = Astro.props;
                 { duration: 0.75 },
             );
 
+        const hideAnimation = () =>
+            animate(
+                overlay,
+                {
+                    clipPath: [null, hoverLeaveClipPath],
+                },
+                { duration: 0.5 },
+            ).finished.then(function () {
+                overlay.style.clipPath = initialClipPath;
+            });
+
         if (window.innerWidth > 1023) {
-            card.addEventListener("mouseenter", function () {
-                revealAnimation();
-            });
-            card.addEventListener("mouseleave", function () {
-                animate(
-                    overlay,
-                    {
-                        clipPath: [null, hoverLeaveClipPath],
-                    },
-                    { duration: 0.5 },
-                ).finished.then(function () {
-                    overlay.style.clipPath = initialClipPath;
-                });
-            });
+            card.addEventListener("mouseenter", revealAnimation);
+            card.addEventListener("mouseleave", hideAnimation);
         } else {
-            inView(card, () => {});
+            inView(
+                card,
+                () => {
+                    revealAnimation();
+                    return hideAnimation;
+                },
+                {
+                    amount: 0.75,
+                },
+            );
         }
     });
 </script>
