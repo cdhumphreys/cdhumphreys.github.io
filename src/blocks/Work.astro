@@ -1,5 +1,4 @@
 ---
-import { Picture } from "astro:assets";
 import ProjectCard from "../components/ProjectCard.astro";
 
 import barcodegenieImage from "../images/projects/barcodegenie.jpg";
@@ -8,86 +7,86 @@ import plasmorImage from "../images/projects/plasmor.jpg";
 import tagImage from "../images/projects/tag.jpg";
 ---
 
-<section id="work" class="work container">
-    <div class="work__inner">
-        <header class="work__header">
-            <h2 class="work__title">Work</h2>
-            <div class="work__description">
-                <p>
-                    These are some of the sites I’ve worked on in my current
-                    role of front-end developer at Pixelbuilders; alongside a
-                    talented team of designers, back-end developers & project
-                    managers to create some great projects.
-                </p>
-            </div>
-        </header>
-        <div class="work__grid">
-            <ProjectCard
-                style="--i: 0"
-                img={tagImage}
-                href="https://www.theaccessgroup.com/en-gb/"
-                title="The Access Group"
-                tags={["CSS Variables", "Design System", "Typescript"]}
-                alt="Screenshot of the TAG website"
-            >
-                <p>
-                    A large scale project running across multiple brands, this
-                    was a great use case for design systems, requiring close
-                    work with the design team to ensure it was maintainable
-                    across the different brands
-                </p>
-            </ProjectCard>
-            <ProjectCard
-                style="--i: 1"
-                img={barcodegenieImage}
-                href="https://www.barcodegenie.co.uk/"
-                title="Barcode Genie"
-                tags={["Astro", "CI/CD", "Azure", "SSG", "React"]}
-                alt="Screenshot of the Barcode Genie website"
-            >
-                <p>
-                    Built with a Headless CMS, Astro, React & deployed to Azure
-                    via a CI/CD pipeline this was a full-stack project utilising
-                    some cloud solutions to host the CMS and static site
-                    separately. Thanks to the static content being generated at
-                    build time the load times are incredibly fast
-                </p>
-            </ProjectCard>
-            <ProjectCard
-                style="--i: 2"
-                img={leadtechImage}
-                href="https://www.lead-tech.co.uk/"
-                title="Leadtech"
-                tags={[
-                    "CSS Variables",
-                    "Design System",
-                    "Theming",
-                    "Animations",
-                ]}
-                alt="Screenshot of the Leadtech website"
-            >
-                <p>
-                    Leadtech needed to be a very flexible site in theme and
-                    widgets as it spanned a number of microsites from the same
-                    codebase. The animations with the coloured pills throughout
-                    the site were a lot of fun to work on
-                </p>
-            </ProjectCard>
-            <ProjectCard
-                style="--i: 3"
-                img={plasmorImage}
-                href="https://www.plasmor.co.uk/"
-                title="Plasmor"
-                tags={["Micro-interactions"]}
-                alt="Screenshot of the TAG website"
-            >
-                <p>
-                    A site for building materials with a great contrast of
-                    colours with the dark theme. Lots of small
-                    micro-interactions and animations to liven up the site.
-                </p>
-            </ProjectCard>
+<section id="work" class="work container section">
+    <header class="work__header section__header">
+        <h2 class="work__title section__title">Work</h2>
+        <div class="work__description section__description">
+            <p>
+                These are some of the sites I’ve worked on in my current role of
+                front-end developer at Pixelbuilders; alongside a talented team
+                of designers, back-end developers & project managers to create
+                some great projects.
+            </p>
         </div>
+    </header>
+    <div class="work__grid">
+        <ProjectCard
+            style="--i: 0"
+            img={tagImage}
+            href="https://www.theaccessgroup.com/en-gb/"
+            title="The Access Group"
+            tags={["Design System", "Theming"]}
+            alt="Screenshot of the TAG website"
+        >
+            <p>
+                A large scale project running across multiple brands, this was a
+                great use case for design systems, requiring close work with the
+                design team to ensure it was maintainable across the different
+                brands
+            </p>
+        </ProjectCard>
+
+        <ProjectCard
+            style="--i: 1"
+            img={barcodegenieImage}
+            href="https://www.barcodegenie.co.uk/"
+            title="Barcode Genie"
+            tags={["Astro", "CI/CD"]}
+            alt="Screenshot of the Barcode Genie website"
+        >
+            <p>
+                Built with a Headless CMS, Astro, React & deployed to Azure via
+                a CI/CD pipeline this was a full-stack project utilising some
+                cloud solutions to host the CMS and static site separately.
+            </p>
+            <p>
+                Thanks to the static content being generated at build time the
+                load times are incredibly fast
+            </p>
+        </ProjectCard>
+
+        <ProjectCard
+            style="--i: 2"
+            img={leadtechImage}
+            href="https://www.lead-tech.co.uk/"
+            title="Leadtech"
+            tags={["Theming", "Animations"]}
+            alt="Screenshot of the Leadtech website"
+        >
+            <p>
+                Leadtech needed to be a very flexible site in theme and widgets
+                as it spanned a number of microsites from the same codebase.
+            </p>
+            <p>
+                The animations with the coloured pills throughout the site were
+                a lot of fun to work on
+            </p>
+        </ProjectCard>
+
+        <ProjectCard
+            style="--i: 3"
+            img={plasmorImage}
+            href="https://www.plasmor.co.uk/"
+            title="Plasmor"
+            tags={["Micro-interactions"]}
+            alt="Screenshot of the TAG website"
+        >
+            <p>
+                A site for building materials with a contrasting colours that
+                really pop out. Lots of small micro-interactions and animations
+                to liven up the site.
+            </p>
+        </ProjectCard>
     </div>
 </section>
 
@@ -97,6 +96,13 @@ import tagImage from "../images/projects/tag.jpg";
 
         position: relative;
 
+        gap: var(--spacing-60) 0;
+
+        @media screen and (min-width: 1024px) {
+            gap: var(--spacing-80);
+        }
+
+        /* Glow */
         &::before {
             content: "";
 
@@ -131,6 +137,7 @@ import tagImage from "../images/projects/tag.jpg";
             }
         }
 
+        /* Glow */
         &::after {
             content: "";
 
@@ -167,50 +174,43 @@ import tagImage from "../images/projects/tag.jpg";
         }
     }
 
-    .work__inner {
-        display: flex;
-        flex-direction: column;
+    .work__grid {
+        padding-inline: var(--spacing-10);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-column: grid;
         gap: var(--spacing-60);
 
         @media screen and (min-width: 1024px) {
-            gap: var(--spacing-80);
-        }
-    }
+            padding-inline: var(--spacing-20);
 
-    .work__header {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-20);
-    }
-
-    .work__title {
-        font-size: var(--fs-title);
-    }
-
-    .work__description {
-        max-width: 60ch;
-    }
-
-    .work__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-        gap: var(--spacing-30);
-
-        @media screen and (min-width: 1024px) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-
-            gap: var(--spacing-40);
         }
     }
 </style>
 
 <script>
-    import { inViewObs } from "../utils";
+    import { animate, scroll } from "motion";
 
-    const workSection = document.querySelector<HTMLElement>("#work");
-    if (workSection) {
-        inViewObs(workSection, () => {
-            workSection.classList.add("in-view");
-        });
-    }
+    const projectCards =
+        document.querySelectorAll<HTMLElement>(".js-projectCard");
+
+    const sectionLength = 1 / projectCards.length;
+    projectCards.forEach(function (card, i) {
+        const image = card.querySelector(".project-card__image")!;
+
+        scroll(
+            animate(image, {
+                transform: ["translateY(-25%)", "translateY(25%)"],
+            }),
+            {
+                offset: [
+                    [sectionLength * i, 1],
+                    [sectionLength * (i + 1), 0],
+                ],
+                target: card,
+            },
+        );
+    });
 </script>
