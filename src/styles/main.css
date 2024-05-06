@@ -1,12 +1,10 @@
 :root {
     /* Colours */
     --colour-primary: #B46CF8;
-    --colour-secondary: #E6AF2E;
     --colour-text-base: white;
     --colour-black: #222;
 
-    --colour-primary-rgba: 180, 108, 248;
-    --colour-secondary-rgba: 230, 175, 46;
+    --colour-primary-rgb: 180, 108, 248;
 
     --colour-background: var(--colour-black);
     --colour-background-card: var(--colour-black);
@@ -48,8 +46,8 @@
     --radius-10: 10px;
     --radius-full: 9999px;
 
-    --card-shadow: 0 0px 4px 0 rgba(var(--colour-primary-rgba), 0.2);
-    --card-shadow--hover: 0 0px 6px 0 rgba(var(--colour-primary-rgba), 1);
+    --card-shadow: 0 0px 4px 0 rgba(var(--colour-primary-rgb), 0.2);
+    --card-shadow--hover: 0 0px 6px 0 rgba(var(--colour-primary-rgb), 1);
 
     --section-vertical-padding: var(--spacing-40);
 
@@ -74,6 +72,8 @@ body {
 
     font-family: var(--font-copy);
     font-size: var(--fs-body);
+
+    overflow-x: clip;
 }
 
 h1,
@@ -110,9 +110,9 @@ a {
 
     display: grid;
     grid-template-columns:
-        [grid-start] 1fr [content-start] minmax(min(100%, calc(var(--max-content-width) - 2 * var(--padding-inline))), 1fr) [content-end] 1fr [grid-end];
+        [grid-start] minmax(0, 1fr) [content-start] minmax(min(100%, calc(var(--max-content-width) - 2 * var(--padding-inline))), 1fr) [content-end] minmax(0, 1fr) [grid-end];
 
-    &> :not(.container-breakout) {
+    :where(& > :not(.container-breakout)) {
         grid-column: content;
     }
 
@@ -145,4 +145,61 @@ a {
 
 .text-secondary {
     color: var(--colour-secondary);
+}
+
+
+.section {
+    .section__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-20);
+    }
+
+    .section__title {
+        align-self: flex-start;
+        font-size: var(--fs-title);
+        background-image: linear-gradient(to right,
+                rgba(var(--colour-primary-rgb), 0.75),
+                rgba(var(--colour-primary-rgb), 0.75));
+        background-repeat: no-repeat;
+        background-size: 100% 8px;
+        background-position: bottom 0px center;
+
+        @media screen and (min-width: 1024px) {
+            background-size: 100% 16px;
+            background-position: bottom 6px center;
+
+        }
+    }
+
+    .section__description {
+        max-width: 55ch;
+        font-size: var(--fs-16);
+
+        @media screen and (min-width: 1024px) {
+            font-size: var(--fs-24);
+
+        }
+    }
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
 }

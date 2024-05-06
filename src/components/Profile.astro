@@ -23,7 +23,7 @@ import profileImage from "../images/profile/avatar.jpg";
     .profile {
         display: flex;
         flex-direction: column-reverse;
-        gap: var(--spacing-40);
+        gap: var(--spacing-60);
 
         @media screen and (min-width: 1024px) {
             flex-direction: row;
@@ -32,12 +32,16 @@ import profileImage from "../images/profile/avatar.jpg";
         }
 
         .profile__text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-30);
         }
+
         .profile__title {
             font-size: var(--fs-30);
         }
+
         .profile__description {
-            margin-top: var(--spacing-10);
             font-size: var(--fs-18);
         }
 

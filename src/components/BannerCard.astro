@@ -1,0 +1,103 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={["card", className]}>
+    <div class="card__inner">
+        <div class="card__text-block">
+            <div class="card__title">
+                <slot name="title" />
+            </div>
+            <div class="card__text">
+                <slot name="text" />
+            </div>
+        </div>
+        <div class="card__image-block">
+            <div class="card__image">
+                <slot name="image" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: var(--spacing-10);
+    }
+
+    .card {
+        position: relative;
+        border-radius: var(--radius-10);
+        border: 2px solid rgba(var(--colour-primary-rgb), 0.2);
+        box-shadow: var(--card-shadow);
+        flex: 1;
+
+        display: flex;
+
+        transition: box-shadow 500ms ease;
+
+        background-color: rgba(var(--colour-primary-rgb), 0.05);
+
+        overflow: hidden;
+
+        &:hover,
+        &:focus-visible {
+            box-shadow: var(--card-shadow--hover);
+
+            outline-color: var(--colour-primary);
+        }
+
+        .card__inner {
+            padding: var(--spacing-40) var(--spacing-30);
+            display: flex;
+            gap: var(--spacing-40);
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            flex: 1;
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                gap: var(--spacing-60);
+            }
+        }
+
+        .card__text-block {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-20);
+        }
+
+        .card__title {
+            display: flex;
+            gap: var(--spacing-20);
+            font-size: var(--fs-20);
+        }
+
+        .card__text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-10);
+            font-size: var(--fs-14);
+        }
+
+        .card__image-block {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(33%, -33%);
+
+            opacity: 0.25;
+        }
+    }
+</style>
