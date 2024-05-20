@@ -208,20 +208,19 @@ const { img, alt, tags, title, style, href } = Astro.props;
                 overlay.style.clipPath = initialClipPath;
             });
 
-        if (window.innerWidth > 1023) {
-            card.addEventListener("mouseenter", revealAnimation);
-            card.addEventListener("mouseleave", hideAnimation);
-        } else {
-            inView(
-                card,
-                () => {
+        card.addEventListener("mouseenter", revealAnimation);
+        card.addEventListener("mouseleave", hideAnimation);
+        inView(
+            card,
+            () => {
+                if (window.innerWidth < 1024) {
                     revealAnimation();
-                    return hideAnimation;
-                },
-                {
-                    amount: 0.75,
-                },
-            );
-        }
+                }
+                return hideAnimation;
+            },
+            {
+                amount: 0.75,
+            },
+        );
     });
 </script>
