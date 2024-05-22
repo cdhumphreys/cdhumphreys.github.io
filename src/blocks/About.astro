@@ -1,3 +1,113 @@
-<section class="about container">
-    <h2>About</h2>
+---
+import { getCollection } from "astro:content";
+import AboutCard from "../components/AboutCard.astro";
+// import cookingImage from "../images/hobbies/cooking.svg";
+// import gamingImage from "../images/hobbies/gaming.svg";
+// import gymImage from "../images/hobbies/gym.svg";
+// import readingImage from "../images/hobbies/reading.svg";
+
+const allAboutEntries = await getCollection("about");
+---
+
+<section id="about" class="about section container">
+    <header class="section__header">
+        <h2 class="section__title">About</h2>
+    </header>
+    <div class="js-aboutCardsContainer about__content">
+        <AboutCard isIntro={true}>
+            <p>
+                I've been a web developer for almost a decade, wearing many hats
+                throughout that time - from full-stack to dedicated front-end.
+            </p>
+            <p>
+                I like problem solving no matter the tech-stack and enjoy
+                picking up new technologies.
+            </p>
+            <p>
+                I've worked at a range of companies from advertising agencies,
+                to a start-up - and currently work as a front-end focussed web
+                developer at <a
+                    href="https://www.pixelbuilders.com/"
+                    target="_blank"
+                    rel="noreferrer">Pixelbuilders</a
+                >
+            </p>
+            <p>
+                You'll find my current hobbies in the bento boxes below - I got
+                a chance to go to Japan recently and already miss their
+                convenient bento boxes 🍱
+            </p>
+        </AboutCard>
+        {
+            allAboutEntries.map(async (entry) => {
+                const { Content } = await entry.render();
+                return (
+                    <AboutCard img={entry.data.img} label={entry.data.label}>
+                        <Content />
+                    </AboutCard>
+                );
+            })
+        }
+    </div>
 </section>
+
+<style>
+    .about {
+        .about__content {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-auto-rows: 1fr;
+            gap: var(--spacing-10);
+
+            max-width: 980px;
+            margin-inline: auto;
+
+            @media (min-width: 1024px) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    }
+</style>
+
+<script>
+    import { animate, inView, spring, stagger } from "motion";
+
+    const cards = Array.from(document.querySelectorAll(".js-aboutCard"));
+    const cardsContainer = document.querySelector(".js-aboutCardsContainer");
+
+    if (cardsContainer) {
+        inView(
+            cards,
+            (info) => {
+                info.target.classList.add("in-view");
+
+                return () => {
+                    info.target.classList.remove("in-view");
+                };
+            },
+            {
+                amount: 0.5,
+            },
+        );
+
+        inView(
+            cardsContainer,
+            () => {
+                animate(
+                    cards,
+                    { opacity: [0, 1], scale: [0.5, 1] },
+                    {
+                        scale: {
+                            easing: spring({ damping: 100 }),
+                        },
+                        duration: 2,
+                        delay: stagger(0.25),
+                    },
+                );
+            },
+            {
+                amount: 0.5,
+            },
+        );
+    }
+</script>
