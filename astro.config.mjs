@@ -1,7 +1,6 @@
 
 
 import { defineConfig } from 'astro/config';
-import { transformer } from 'astro/zod';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
 
