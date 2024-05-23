@@ -12,7 +12,10 @@ import BannerCard from "../components/BannerCard.astro";
     <div class="banner__inner">
         <Profile />
         <div class="banner__nav">
-            <a href="#work" onclick="lenis.scrollTo('#work')">
+            <a
+                href="#work"
+                onclick="lenis.scrollTo('#work', {lerp: 0.05, lock: true})"
+            >
                 <BannerCard class="card--translucent">
                     <Fragment slot="title">
                         <h3>Work</h3>
@@ -29,7 +32,10 @@ import BannerCard from "../components/BannerCard.astro";
                     </Fragment>
                 </BannerCard>
             </a>
-            <a href="#about" onclick="lenis.scrollTo('#about')">
+            <a
+                href="#about"
+                onclick="lenis.scrollTo('#about', {lerp: 0.05, lock: true})"
+            >
                 <BannerCard class="card--translucent">
                     <Fragment slot="title">
                         <h3>About</h3>
