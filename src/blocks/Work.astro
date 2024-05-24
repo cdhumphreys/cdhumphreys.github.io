@@ -1,11 +1,9 @@
 ---
 // TODO: Update this to use Collection
+import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 
-import barcodegenieImage from "../images/projects/barcodegenie.jpg";
-import leadtechImage from "../images/projects/leadtech.jpg";
-import plasmorImage from "../images/projects/plasmor.jpg";
-import tagImage from "../images/projects/tag.jpg";
+const projectEntries = await getCollection("projects");
 ---
 
 <section id="work" class="js-workSection work container section">
@@ -21,73 +19,23 @@ import tagImage from "../images/projects/tag.jpg";
         </div>
     </header>
     <div class="work__grid">
-        <ProjectCard
-            style="--i: 0"
-            img={tagImage}
-            href="https://www.theaccessgroup.com/en-gb/"
-            title="The Access Group"
-            tags={["Design System", "Theming"]}
-            alt="Screenshot of the TAG website"
-        >
-            <p>
-                A large scale project running across multiple brands, this was a
-                great use case for design systems, requiring close work with the
-                design team to ensure it was maintainable across the different
-                brands
-            </p>
-        </ProjectCard>
-
-        <ProjectCard
-            style="--i: 1"
-            img={barcodegenieImage}
-            href="https://www.barcodegenie.co.uk/"
-            title="Barcode Genie"
-            tags={["Astro", "CI/CD"]}
-            alt="Screenshot of the Barcode Genie website"
-        >
-            <p>
-                Built with a Headless CMS, Astro, React & deployed to Azure via
-                a CI/CD pipeline this was a full-stack project utilising some
-                cloud solutions to host the CMS and static site separately.
-            </p>
-            <p>
-                Thanks to the static content being generated at build time the
-                load times are incredibly fast
-            </p>
-        </ProjectCard>
-
-        <ProjectCard
-            style="--i: 2"
-            img={leadtechImage}
-            href="https://www.lead-tech.co.uk/"
-            title="Leadtech"
-            tags={["Theming", "Animations"]}
-            alt="Screenshot of the Leadtech website"
-        >
-            <p>
-                Leadtech needed to be a very flexible site in theme and widgets
-                as it spanned a number of microsites from the same codebase.
-            </p>
-            <p>
-                The animations with the coloured pills throughout the site were
-                a lot of fun to work on
-            </p>
-        </ProjectCard>
-
-        <ProjectCard
-            style="--i: 3"
-            img={plasmorImage}
-            href="https://www.plasmor.co.uk/"
-            title="Plasmor"
-            tags={["Micro-interactions"]}
-            alt="Screenshot of the TAG website"
-        >
-            <p>
-                A site for building materials with a contrasting colours that
-                really pop out. Lots of small micro-interactions and animations
-                to liven up the site.
-            </p>
-        </ProjectCard>
+        {
+            projectEntries.map(async (entry, idx) => {
+                const { Content } = await entry.render();
+                return (
+                    <ProjectCard
+                        style={`--i: ${idx}`}
+                        img={entry.data.img}
+                        href={entry.data.href}
+                        title={entry.data.title}
+                        tags={entry.data.tags}
+                        alt={entry.data.alt}
+                    >
+                        <Content />
+                    </ProjectCard>
+                );
+            })
+        }
     </div>
 </section>
 

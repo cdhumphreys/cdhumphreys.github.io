@@ -14,7 +14,7 @@ const { img, alt, tags, title, style, href } = Astro.props;
     <div class="project-card__image-wrapper">
         <Picture
             src={img}
-            widths={[400, 800, 1200, img.width]}
+            widths={[400, 800, 1200]}
             alt={alt}
             class="project-card__image"
             loading="lazy"
@@ -94,7 +94,7 @@ const { img, alt, tags, title, style, href } = Astro.props;
             object-fit: cover;
             object-position: top center;
 
-            filter: brightness(0.8);
+            /* filter: brightness(0.8); */
         }
 
         .project-card__overlay {
@@ -154,10 +154,6 @@ const { img, alt, tags, title, style, href } = Astro.props;
             font-size: var(--fs-16);
             text-wrap: balance;
             max-width: 55ch;
-        }
-
-        :global(p + p) {
-            margin-top: 1em;
         }
 
         .project-card__tags {
