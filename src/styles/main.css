@@ -72,7 +72,10 @@ html {
 }
 
 body {
-    background: var(--colour-background);
+    position: relative;
+    background-color: var(--colour-background);
+
+
     color: var(--colour-text-base);
 
     font-family: var(--font-copy);
@@ -80,6 +83,17 @@ body {
 
     overflow-x: clip;
     width: 100%;
+
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background-image: url('/poly-bg.svg');
+
+        opacity: 0.1;
+
+    }
 }
 
 h1,

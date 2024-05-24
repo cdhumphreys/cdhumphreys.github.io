@@ -39,21 +39,27 @@ import "../styles/main.css";
 		isolation: isolate;
 	}
 	.spotlight {
-		position: fixed;
-		z-index: -1;
-		width: 500px;
-		height: 500px;
-		top: 0;
-		left: 0;
+		display: none;
 
-		background-image: radial-gradient(
-			50% 50%,
-			var(--colour-primary),
-			transparent
-		);
-		filter: blur(100px);
-		background-size: contain;
-		opacity: 0.3;
+		@media (min-width: 1024px) {
+			display: block;
+
+			position: fixed;
+			z-index: -1;
+			width: 500px;
+			height: 500px;
+			top: 0;
+			left: 0;
+
+			background-image: radial-gradient(
+				50% 50%,
+				var(--colour-primary),
+				transparent
+			);
+			filter: blur(100px);
+			background-size: contain;
+			opacity: 0.3;
+		}
 	}
 </style>
 <script>

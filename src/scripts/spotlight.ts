@@ -3,7 +3,7 @@ import { animate, spring } from "motion";
 (function () {
     const body = document.body
 
-    const spotlight = document.querySelector<HTMLElement>('.js-spotlight')!;
+    const spotlight = document.querySelector<HTMLElement>('.js-spotlight');
 
     if (!spotlight) return;
 

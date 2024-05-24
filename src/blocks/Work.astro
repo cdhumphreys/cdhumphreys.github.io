@@ -1,4 +1,5 @@
 ---
+// TODO: Update this to use Collection
 import ProjectCard from "../components/ProjectCard.astro";
 
 import barcodegenieImage from "../images/projects/barcodegenie.jpg";
@@ -7,7 +8,7 @@ import plasmorImage from "../images/projects/plasmor.jpg";
 import tagImage from "../images/projects/tag.jpg";
 ---
 
-<section id="work" class="work container section">
+<section id="work" class="js-workSection work container section">
     <header class="work__header section__header">
         <h2 class="work__title section__title">Work</h2>
         <div class="work__description section__description">
@@ -93,77 +94,6 @@ import tagImage from "../images/projects/tag.jpg";
 <style>
     .work {
         position: relative;
-
-        /* Glow */
-        &::before {
-            content: "";
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-
-            background-image: radial-gradient(
-                    circle at 100% 40%,
-                    var(--colour-primary),
-                    transparent 50%
-                ),
-                radial-gradient(circle at 100% 40%, white, transparent 50%);
-            filter: blur(100px);
-            background-position: center, center;
-
-            background-repeat: no-repeat;
-            background-size: 80vw auto;
-            opacity: 0.3;
-
-            @media screen and (min-width: 1024px) {
-                background-size: contain;
-                background-image: radial-gradient(
-                        circle at 100% 0%,
-                        var(--colour-primary),
-                        transparent 50%
-                    ),
-                    radial-gradient(circle at 100% 0%, white, transparent 50%);
-            }
-        }
-
-        /* Glow */
-        &::after {
-            content: "";
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-
-            background-image: radial-gradient(
-                    circle at 0% 80%,
-                    var(--colour-primary),
-                    transparent 50%
-                ),
-                radial-gradient(circle at 0% 80%, white, transparent 50%);
-            filter: blur(100px);
-            background-position:
-                bottom left,
-                bottom left;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            opacity: 0.3;
-
-            @media screen and (min-width: 1024px) {
-                background-size: 25vw 25vw;
-                background-image: radial-gradient(
-                        circle at 0% 50%,
-                        var(--colour-primary),
-                        transparent 50%
-                    ),
-                    radial-gradient(circle at 0% 50%, white, transparent 50%);
-            }
-        }
     }
 
     .work__grid {

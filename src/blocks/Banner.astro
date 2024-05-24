@@ -12,10 +12,7 @@ import BannerCard from "../components/BannerCard.astro";
     <div class="banner__inner">
         <Profile />
         <div class="banner__nav">
-            <a
-                href="#work"
-                onclick="lenis.scrollTo('#work', {lerp: 0.05, lock: true})"
-            >
+            <a href="#work" onclick="lenis.scrollTo('#work', {lerp: 0.05})">
                 <BannerCard class="card--translucent">
                     <Fragment slot="title">
                         <h3>Work</h3>
@@ -32,10 +29,7 @@ import BannerCard from "../components/BannerCard.astro";
                     </Fragment>
                 </BannerCard>
             </a>
-            <a
-                href="#about"
-                onclick="lenis.scrollTo('#about', {lerp: 0.05, lock: true})"
-            >
+            <a href="#about" onclick="lenis.scrollTo('#about', {lerp: 0.05})">
                 <BannerCard class="card--translucent">
                     <Fragment slot="title">
                         <h3>About</h3>
@@ -85,51 +79,6 @@ import BannerCard from "../components/BannerCard.astro";
         min-height: 100vh;
 
         place-content: center;
-
-        &::before,
-        &::after {
-            content: "";
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        &::before {
-            background-image: radial-gradient(
-                circle at 100% 50%,
-                var(--colour-primary),
-                transparent
-            );
-            background-size: 550px 400px;
-            background-repeat: no-repeat;
-            background-position: top -30% right 200%;
-
-            filter: blur(80px);
-
-            @media screen and (min-width: 1024px) {
-                display: none;
-            }
-        }
-
-        &::after {
-            background-image: radial-gradient(
-                circle at 150% 150%,
-                var(--colour-primary),
-                transparent
-            );
-            filter: blur(200px);
-            background-position: left 0% bottom 0%;
-            background-repeat: no-repeat;
-            background-size: 700px 700px;
-
-            @media screen and (min-width: 1024px) {
-                display: none;
-            }
-        }
     }
     .banner__inner {
         display: flex;
