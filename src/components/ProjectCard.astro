@@ -11,6 +11,9 @@ const { img, alt, tags, title, style, href } = Astro.props;
     class="js-projectCard project-card"
     style={style}
 >
+    <h3 class="project-card__title">
+        {title}
+    </h3>
     <div class="project-card__image-wrapper">
         <Picture
             src={img}
@@ -28,9 +31,6 @@ const { img, alt, tags, title, style, href } = Astro.props;
         </div>
     </div>
     <div class="project-card__footer">
-        <h3 class="project-card__title">
-            {title}
-        </h3>
         <div class="project-tags">
             {
                 tags.length && (
@@ -69,8 +69,20 @@ const { img, alt, tags, title, style, href } = Astro.props;
 
             z-index: -1;
 
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: minmax(0, 1fr);
+            place-content: center;
+
             @media (min-width: 1024px) {
                 aspect-ratio: 580 / 326;
+            }
+
+            :global(picture) {
+                grid-column: 1;
+                grid-row: 1;
+
+                height: 100%;
             }
         }
 
@@ -82,6 +94,7 @@ const { img, alt, tags, title, style, href } = Astro.props;
             @media (min-width: 1024px) {
                 padding-inline: var(--spacing-10);
                 flex-direction: row;
+                justify-content: center;
             }
         }
 
@@ -98,14 +111,7 @@ const { img, alt, tags, title, style, href } = Astro.props;
         }
 
         .project-card__overlay {
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            width: 80%;
-            height: 80%;
-
+            margin: var(--spacing-20);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -120,11 +126,12 @@ const { img, alt, tags, title, style, href } = Astro.props;
             border-radius: var(--radius-10);
             backdrop-filter: blur(15px);
 
-            transform: translate(-50%, -50%);
-
             clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
 
             will-change: clip-path;
+
+            grid-column: 1;
+            grid-row: 1;
 
             @media screen and (min-width: 1024px) {
                 padding: var(--spacing-40);
@@ -144,6 +151,16 @@ const { img, alt, tags, title, style, href } = Astro.props;
             color: white;
 
             isolation: isolate;
+
+            margin-inline: auto;
+
+            background-image: linear-gradient(
+                var(--colour-primary),
+                var(--colour-primary)
+            );
+            background-repeat: no-repeat;
+            background-size: 100% 4px;
+            background-position: left bottom;
 
             @media (min-width: 1024px) {
                 font-size: var(--fs-24);
