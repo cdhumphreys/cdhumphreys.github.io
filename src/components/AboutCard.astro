@@ -60,6 +60,7 @@ const { img, label, isIntro } = Astro.props;
         grid-template-rows: 1fr;
 
         isolation: isolate;
+        z-index: 0;
 
         transform: scale(0.5);
         opacity: 0;
@@ -75,7 +76,7 @@ const { img, label, isIntro } = Astro.props;
             align-items: flex-end;
             justify-content: center;
 
-            will-change: filter;
+            will-change: filter, opacity;
 
             overflow: hidden;
 
@@ -104,7 +105,11 @@ const { img, label, isIntro } = Astro.props;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: var(--radius-10);
 
+            z-index: 1;
+
             opacity: 0;
+
+            will-change: opacity;
         }
 
         .about-card__label {
@@ -135,7 +140,7 @@ const { img, label, isIntro } = Astro.props;
             margin-inline: auto;
 
             @media (min-width: 1024px) {
-                font-size: -var(--fs-18);
+                font-size: var(--fs-18);
 
                 padding: var(--spacing-40);
                 padding-left: var(--spacing-60);
