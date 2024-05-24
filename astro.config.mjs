@@ -11,8 +11,7 @@ export default defineConfig({
             transformer: 'lightningcss',
 
             lightningcss: {
-                targets: browserslistToTargets(browserslist('last 6 versions, not dead')),
-
+                targets: browserslistToTargets(browserslist('last 6 versions, not dead, >= 0.1%')),
             }
         }
     }
