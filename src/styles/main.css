@@ -84,6 +84,8 @@ body {
     overflow-x: clip;
     width: 100%;
 
+    isolation: isolate;
+
     &::before {
         content: "";
         position: fixed;
@@ -92,6 +94,8 @@ body {
         background-image: url('/poly-bg.svg');
 
         opacity: 0.1;
+
+        z-index: -1;
 
     }
 }
